@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triangle check</title>
+    <style>
+      body {
+        background-color: #575757;
+      }
+      .box {
+        width: 400px;
+        height: 150px;
+        margin: auto;
+        border: 50px solid orange;
+        margin-top: 50px;
+        padding-top: 5px;
+        padding-left: 10px;
+        color: aliceblue;
+        background-color: #d2c8ac;
+        border-radius: 15px;
+      }
+      .display {
+        display: block;
+        width: 300px;
+        height: 30px;
+        padding: 10px 15px;
+        margin: 10px 0;
+
+       
+        background: #1a1a1a;
+        border: 3px solid #333;
+        border-radius: 8px;
+
+      
+        color: #4caf50; 
+        font-family: "Courier New", monospace;
+        font-size: 1em;
+        text-align: right;
+        font-weight: 600;
+        
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+
+       
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      input[type="text"] {
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        padding: 5px;
+        width: 60px;
+        margin-right: 5px;
+      }
+      .btn {
+        margin-top: 15px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        box-shadow: 1px 1px gray;
+      }
+      .btn:active{
+        transform: translate(1px, 1px);
+        box-shadow: none;
+      }
+      .input-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn-box{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <form name="leapYear">
+        <div class="input-box">
+          <output id="result" class="display" disabled>Output</output>
+          
+          <div>
+             <input type="text" name="sideA" placeholder="Side A" />
+             <input type="text" name="sideB" placeholder="Side B" />
+             <input type="text" name="sideC" placeholder="Side C" />
+         </div>
+         
+
+        </div>
+        
+        <div class="btn-box">
+           <button class="btn">Check</button>
+           <button class="btn" type="reset">Reset</button>
+        </div>
+       
+      </form>
+    </div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("[name='leapYear']");
+    const result = document.getElementById("result");
+    const sideA = form.elements.sideA;
+    const sideB = form.elements.sideB;
+    const sideC = form.elements.sideC;
+
+    // Autofocus on input field
+    sideA.focus();
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      
+        const s1Str = sideA.value.trim();
+        const s2Str = sideB.value.trim();
+        const s3Str = sideC.value.trim();
+     
+           if (s1Str === "" || s2Str === "" || s3Str === "") {
+            result.textContent = "Please enter all three sides.";
+            return;
+           }
+
+        const s1 = parseFloat(s1Str);
+        const s2 = parseFloat(s2Str);
+        const s3 = parseFloat(s3Str);
+
+         if (isNaN(s1) || isNaN(s2) || isNaN(s3) || s1 <= 0 || s2 <= 0 || s3 <= 0) {
+          result.textContent = "Enter valid positive numbers.";
+          return;
+        }
+         if (s1 + s2 <= s3 || s1 + s3 <= s2 || s2 + s3 <= s1) {
+          result.textContent = "Invalid triangle: Sum of any two sides must be greater than the third.";
+        } 
+      else{
+        if(s1===s2 && s2===s3){
+          result.textContent = "Equilateral triangle";
+        }
+        else if(s1===s2 || s2===s3 || s1===s3){
+          result.textContent = "Isosceles triangle";
+        }
+        else{
+            result.textContent= "Scalene triangle";
+        }
+      }
+
+    
+    });
+  });
+</script>
+  </body>
+</html>

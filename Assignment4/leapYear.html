@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leap Year</title>
+    <style>
+      body {
+        background-color: #575757;
+      }
+      .box {
+        width: 400px;
+        height: 150px;
+        margin: auto;
+        border: 50px solid orange;
+        margin-top: 50px;
+        padding-top: 5px;
+        padding-left: 10px;
+        color: aliceblue;
+        background-color: #d2c8ac;
+        border-radius: 15px;
+      }
+      .display {
+        display: block;
+        width: 300px;
+        height: 30px;
+        padding: 10px 15px;
+        margin: 10px 0;
+
+       
+        background: #1a1a1a;
+        border: 3px solid #333;
+        border-radius: 8px;
+
+      
+        color: #4caf50; 
+        font-family: "Courier New", monospace;
+        font-size: 1.1em;
+        text-align: right;
+        font-weight: 600;
+        
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+
+       
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      input[type="text"] {
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        padding: 5px;
+      }
+      .btn {
+        margin-top: 15px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+      }
+      .input-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn-box{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <form name="leapYear">
+        <div class="input-box">
+          <output id="result" class="display" disabled>Output</output>
+          <input type="text" name="year" placeholder="type here..."/>
+        </div>
+        
+        <div class="btn-box">
+           <button class="btn">Check</button>
+           <button class="btn" type="reset">Reset</button>
+        </div>
+       
+      </form>
+    </div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("[name='leapYear']");
+    const result = document.getElementById("result");
+    const yearInput = form.elements.year;
+
+    // Autofocus on input field
+    yearInput.focus();
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const year = yearInput.value.trim(); // Trim to avoid accidental spaces
+
+      if (year === "" || isNaN(year) || +year < 0) {
+        result.textContent = "Please enter a valid year";
+        return;
+      }
+
+      const numericYear = +year; // Convert to number
+
+      if (numericYear % 400 === 0 || (numericYear % 4 === 0 && numericYear % 100 !== 0)) {
+        result.textContent = "Leap year";
+      } else {
+        result.textContent = "Not a leap year";
+      }
+    });
+  });
+</script>
+  </body>
+</html>
