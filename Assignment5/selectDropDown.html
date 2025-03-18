@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>table of a number</title>
+    <style>
+      body {
+        background-color: #2f2f2f;
+      }
+      .box {
+        width: 300px;
+        height: 300px;
+        margin: auto;
+        border: 1px solid orange;
+        margin-top: 50px;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+      }
+      input[type="text"] {
+        outline: none;
+      }
+      #result {
+        list-style: none;
+        color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <form name="table"></form>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("[name='table']");
+        const selEle = document.createElement("select");
+        form.append(selEle);
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        let result = "";
+        for (let i = 1; i <= 3; i++) {
+          if (i === 3) {
+            result = result.concat(`<option>${day}</option>`);
+          } else if (i === 2) {
+            result = result.concat(`<option>${month}</option>`);
+          }
+          else{
+             result += `<option>${year}</option>`;
+          }
+         
+        }
+        selEle.innerHTML = result;
+      });
+    </script>
+  </body>
+</html>

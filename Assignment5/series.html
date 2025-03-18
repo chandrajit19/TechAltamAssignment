@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Divisible by 7</title>
+    <style>
+      body {
+        background-color: rgb(63, 63, 63);
+        color: whitesmoke;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const outEle = document.createElement("output");
+        document.body.appendChild(outEle);
+        let resultStr=""
+            for(let i=1; i<=100; i=2*i){
+              resultStr+=i + ", "
+            }
+           if(resultStr.endsWith(", ")){
+                    resultStr=(resultStr.slice(0, -2))
+           }
+            outEle.textContent=resultStr;
+
+      })
+    </script>
+  </body>
+</html>

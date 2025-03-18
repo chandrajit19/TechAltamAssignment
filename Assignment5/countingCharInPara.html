@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>counting space in a given paragraph</title>
+    <style>
+        body{
+            background-color: rgb(63, 63, 63);
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt, voluptas explicabo! Molestiae consequuntur minima porro optio quibusdam a repellat est temporibus distinctio dolor, consectetur asperiores soluta eaque omnis eligendi adipisci aliquid. Doloremque reprehenderit ex, quas, dicta exercitationem quo velit eos magnam provident incidunt repudiandae ratione commodi consequatur voluptatibus animi quiA.</p>
+</body>
+<script>
+    let paraEle=document.querySelector("p");
+    const parStr=paraEle.textContent.toLowerCase();
+    let counter=0;
+ 
+    for(let i=0, x=parStr.length; i<x;  i++){
+         if( parStr.charAt(i) === "a" ){
+            counter++;
+         }
+    }
+    console.log(counter);
+    
+</script>
+</html>

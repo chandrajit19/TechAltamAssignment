@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table of a number</title>
+    <style>
+        body{
+            background-color: #2f2f2f;
+        }
+        .box{
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            border: 1px solid orange;
+            margin-top: 50px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        input[type="text"]{
+            outline: none;
+        }
+        #result{
+            list-style: none;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+          <form name="table">
+            <input type="text" name="inNum" placeholder="Enter a number" >
+           <button>print</button> <button type="button" id="reset">Reset</button>
+            <output><ol id="result"></ol></output>
+           
+          </form>
+    </div>
+   
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+           const form=document.querySelector("[name='table']")
+           const result=document.getElementById("result")
+           const reset=document.getElementById("reset")
+           const inputNum=form.elements.inNum;
+           inputNum.focus()
+
+
+           form.addEventListener("submit", function(e){
+            e.preventDefault()
+            let tabList="";
+            let num =parseFloat(inputNum.value);
+            if(num>0 && Number.isInteger(num)){
+               for(let i=1; i<=10; i++){
+                 tabList=tabList.concat(`<li> ${num}*${i}=${num*i}</li>`)
+               }
+               result.innerHTML=tabList;
+            }
+            else{
+                result.innerHTML=`<li>Enter a positive number</li>`
+            }
+           })
+
+           reset.addEventListener("click", function(){
+            result.innerHTML="";
+            inputNum.value="";
+            inputNum.focus()
+           })
+        })
+       
+        
+
+    </script>
+</body>
+</html>

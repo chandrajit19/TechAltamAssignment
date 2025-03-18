@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #2c2a2ad4;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    
+
+
+
+
+    <script>
+        
+
+//^ Nested loop
+document.addEventListener("DOMContentLoaded", function () {
+  const tableEle = document.createElement("table");
+  document.body.append(tableEle);
+
+  let counter = 0;
+  for (let i = 1; i <= 10; i++) {
+    const trEle = document.createElement("tr");
+    tableEle.appendChild(trEle);
+    let resultStr=""
+    for (let j = 1; j <= 10; j++) {
+      counter++;
+      //  const tdEle = document.createElement("td")
+      resultStr+= `<td>${counter}</td>`;
+    }
+    trEle.innerHTML = resultStr;
+  }
+});
+ 
+ 
+    </script>
+</body>
+</html>

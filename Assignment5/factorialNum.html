@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial of a num</title>
+    <style>
+        body{
+            background-color: #2f2f2f;
+        }
+        .box{
+            width: 350px;
+            height: 300px;
+            margin: auto;
+            border: 1px solid orange;
+            margin-top: 50px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        input[type="text"]{
+            outline: none;
+        }
+        #result{
+            list-style: none;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+          <form name="primeNum">
+            <input type="text" name="inNum" placeholder="Enter a number" >
+           <button>check factorial</button> <button type="button" id="reset">Reset</button>
+            <output><ol id="result"></ol></output>
+           
+          </form>
+    </div>
+   
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+           const form=document.querySelector("[name='primeNum']")
+           const result=document.getElementById("result")
+           const reset=document.getElementById("reset")
+           const inputNum=form.elements.inNum;
+           inputNum.focus()
+
+           
+           form.addEventListener("submit", function(e){
+            e.preventDefault()
+            let num =parseFloat(inputNum.value);
+            if(num>-1 && Number.isInteger(num)){
+                let product=1
+                 for(let i=num; i>1; i--){
+                     product=product*i
+                 }
+                 result.textContent=product
+            }
+            else{
+                result.innerHTML=`<li>Enter a positive number</li>`;
+            }
+           })
+
+           reset.addEventListener("click", function(){
+            result.innerHTML="";
+            inputNum.value="";
+            inputNum.focus()
+           })
+        })
+       
+        
+       
+    </script>
+</body>
+</html>
