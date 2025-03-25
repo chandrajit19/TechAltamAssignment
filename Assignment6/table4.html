@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>3,3 rows cols </title>
+   <style>
+      body{
+         background-color: #171717cb;
+         color: antiquewhite;
+      }
+     
+   </style>
+</head>
+<body>
+   
+
+   <script>
+        // Print given Array data in Table ( 3 rows, 3 cols).
+          
+          document.addEventListener("DOMContentLoaded", function(){
+          const tblEle=document.createElement("table")
+          document.body.append(tblEle);
+          const data=[ [ 2,5,8], [1,4,7 ],[3,6,9 ] ]; 
+          data.forEach((arr)=>{
+            const trEle=document.createElement("tr")
+              arr.forEach((ele)=>{
+               trEle.innerHTML+=`<td>${ele}</td>`
+              })
+              tblEle.appendChild(trEle);
+          })
+
+
+
+
+          })
+       
+   </script>
+</body>
+</html>

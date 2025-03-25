@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>table of a number</title>
+    <title>Date Selector without Array</title>
     <style>
       body {
         background-color: #2f2f2f;
+        color: bisque;
       }
       .box {
         width: 300px;
@@ -29,31 +30,88 @@
   </head>
   <body>
     <div class="box">
-      <form name="table"></form>
+      <form name="table">
+     
+        <select name="year">
+          <option disabled selected>year</option>
+        </select>
+        
+        <select name="months" disabled>
+          <option disabled selected>mon</option>
+        </select>
+      
+        <select name="day" disabled>
+          <option disabled selected>days</option>
+        </select>
+      </form>
     </div>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const form = document.querySelector("[name='table']");
-        const selEle = document.createElement("select");
-        form.append(selEle);
-        const date = new Date();
-        const year = date.getFullYear();
-        const month = date.getMonth() + 1;
-        const day = date.getDate();
-        let result = "";
-        for (let i = 1; i <= 3; i++) {
-          if (i === 3) {
-            result = result.concat(`<option>${day}</option>`);
-          } else if (i === 2) {
-            result = result.concat(`<option>${month}</option>`);
+        const yearEle = form.elements.year;
+        const monthsEle = form.elements.months;
+        const dayEle = form.elements.day;
+
+        // Populate the year dropdown from 1900 to 2020
+        let yearStr = "";
+        for (let i = 1900; i <= 2020; i++) {
+          yearStr += `<option>${i}</option>`;
+        }
+        yearEle.innerHTML += yearStr;
+
+        // Populate the months dropdown (1-12) without using an array
+        let monthsStr = "";
+        for (let i = 1; i <= 12; i++) {
+          monthsStr += `<option>${i}</option>`;
+        }
+        monthsEle.innerHTML += monthsStr;
+
+      
+       function showDays(year, month){
+        let days=0;
+          if(month===2){
+              days=( year%4===0 && year%100 !=0 || year%400===0) ? 28:29  ;
+            
+          }
+          else if(month===4 || month===6 ||  month===8 || month===10 ){
+             days=30;
           }
           else{
-             result += `<option>${year}</option>`;
+            days=31;
           }
-         
-        }
-        selEle.innerHTML = result;
+
+          let daysStr ="";
+          for(let i=0; i<=days; i++){
+            if(i===0){
+              daysStr += `<option disabled selected>days</option>`;
+            }
+            else{
+              daysStr += ` <option>${i}</option>`;
+            }
+            
+          } 
+          dayEle.innerHTML = daysStr;
+      
+       }
+      
+
+
+        // Enable the months dropdown when a year is selected
+        yearEle.addEventListener("change", function () {
+          monthsEle.disabled = false;
+           monthsEle.innerHTML+=``
+        });
+
+        // Enable the days dropdown and populate it when a month is selected
+        monthsEle.addEventListener("change", function () {
+          dayEle.disabled = false;
+          const month=parseInt(monthsEle.value);
+          const year=parseInt(yearEle.value);
+          showDays(year,month)
+        
+          
+        });
       });
     </script>
   </body>

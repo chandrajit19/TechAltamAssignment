@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Find all prime numbers from given array.</title>
+   <style>
+      body{
+         background-color: rgb(37, 37, 37);
+      }
+   </style>
+</head>
+<body>
+   
+
+   <script>
+
+   function primeFun(arr){
+     let primeArr=[];
+     arr.forEach(ele => {
+        let isPrime=true
+        if(ele<2){
+         isPrime=false
+        }
+        for(let i=2; i<=Math.floor( Math.sqrt(ele)); i++){
+              if(ele%i===0){
+                 isPrime=false
+                  break
+              }
+        }
+        if(isPrime){
+         primeArr.push(ele);
+        }
+     });
+     return primeArr
+   }
+   const arr=[1, 9, 4, 2,10, 50];
+   const result=primeFun(arr);
+   console.log(result);
+
+   </script>
+</body>
+</html>

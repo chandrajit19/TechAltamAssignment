@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Print all month names from an array to select dropdown.</title>
+   <style>
+      body{
+         background-color: rgb(48, 36, 36);
+         color: tomato;
+      }
+   </style>
+</head>
+<body>
+   
+
+   <script>
+      document.addEventListener("DOMContentLoaded", function(){
+      const slctEle=document.createElement("select")
+      document.body.append(slctEle)
+      
+      var months=["--Choose month--", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+      months.forEach((ele, i)=>{
+        if(i===0){
+           slctEle.innerHTML += `<option selected disabled>${ele}</option>`
+          }
+        else{
+        slctEle.innerHTML +=`<option>${ele}</option>`
+              
+        }
+      })
+      
+   
+
+     
+ 
+
+
+
+
+
+
+
+      })
+   </script>
+</body>
+</html>

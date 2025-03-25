@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Creating a new array with double value</title>
+   <style>
+      body{
+         background-color: rgba(0, 0, 0, 0.329);
+      }
+   </style>
+</head>
+<body>
+  
+   
+   <script>
+// Creating a new array with double value
+   function doublFun(arr){
+      const newArr=[];
+    for(let ele of arr){
+       newArr.push(ele*2)
+    }
+    return newArr;
+   }
+   const arr=[1, 9, 4, 2, 10, 50]
+   const result=doublFun(arr)
+   console.log(result)
+
+
+   // Create a new array with factors of 10 only
+   function factorsFun(arr){
+      const newArr=[];
+      for(let ele of arr){
+         if(10%ele===0){
+            newArr.push(ele)
+         }
+      }
+      return newArr;
+   }
+
+   const arr1=[1, 9, 4, 2, 10, 50];
+   const result1=factorsFun(arr1);
+   console.log(result1)
+ 
+   </script>
+</body>
+</html>

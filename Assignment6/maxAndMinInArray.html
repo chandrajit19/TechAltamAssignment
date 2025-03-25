@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Max and minimum in array</title>
+   <style>
+      body{
+         background-color: rgba(42, 41, 41, 0.831);
+      }
+   </style>
+</head>
+<body>
+   
+
+
+   <script>
+      // finding max number in array
+      function maxFun(arr){
+        let temp=arr[0]
+        for(let i=1; i<arr.length; i++){
+          if(temp<arr[i]){
+              temp=arr[i]
+          }
+        } 
+        return temp
+      }
+      const arr=[1, 9, 4, 1200, 10, 50];
+      const result=maxFun(arr);
+      console.log(result)
+      
+    
+     // finding min number in array
+    
+     function minFun(arr){
+      let temp=arr[0]
+       for(let i=1; i<arr.length; i++){
+           if(temp>arr[i]){
+            temp=arr[i]
+           }
+       } 
+       return temp
+     }
+   const resul1=minFun(arr)
+   console.log(resul1);
+    </script>
+</body>
+</html>

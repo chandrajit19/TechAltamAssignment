@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      body{
+         background-color: rgb(24, 23, 23);
+         color: white;
+      }
+   </style>
+</head>
+<body>
+   
+   <script>
+        document.addEventListener("DOMContentLoaded", function(){
+          const slct1=document.createElement("select");
+          const slct2=document.createElement("select");
+          document.body.append(slct1)
+          document.body.append(slct2)
+
+          const state=['--Choose State--', 'up', 'mp', 'hp', 'delhi'];
+          state.forEach((ele, i)=>{
+              if(i===0){
+               slct1.innerHTML += `<option selected disabled>${ele}</option>`
+              }
+              else{
+                  slct1.innerHTML+=`<option>${ele}</option>`
+              }
+               
+                  
+          })
+   
+          slct1.addEventListener("change", function(){
+           
+               const cities=[
+                  ['noida', 'ghaziabad', "lucknow"],
+                  ['bhopal', "indore"], 
+                  ['shimla', "manali"],
+                  ['north', 'south', 'central', 'west', 'east']
+              ];
+         cities.forEach((arr,i)=>{
+             
+            if(slct1.value === 'up' && i===0){
+               slct2.innerHTML=``;
+               arr.forEach((ele)=>{
+                  slct2.innerHTML +=`<option>${ele}</option>` 
+               })
+            }
+            else if(slct1.value==="mp" && i===1){
+                  slct2.innerHTML=``;
+                  arr.forEach((ele)=>{
+                  slct2.innerHTML +=`<option>${ele}</option>` 
+               })
+            }
+              else if(slct1.value==="hp" && i===2){
+                  slct2.innerHTML=``;
+                  arr.forEach((ele)=>{
+                  slct2.innerHTML +=`<option>${ele}</option>` 
+               })
+            }
+           else if(slct1.value==="delhi" && i===3){
+                   slct2.innerHTML=``;
+                   arr.forEach((ele)=>{
+                  slct2.innerHTML +=`<option>${ele}</option>` 
+               })
+            }
+
+           
+
+         })
+
+         })
+        
+        })
+
+
+   </script>
+</body>
+</html>

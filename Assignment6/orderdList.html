@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>printing three ordered list by given array</title>
+   <style>
+      body{
+         background-color: rgba(52, 52, 52, 0.904);
+         color: white;
+      }
+   </style>
+</head>
+<body>
+   
+
+   <script>
+// Print Three Ordered List with given 2D array.
+
+      document.addEventListener("DOMContentLoaded", function(){
+        const olEle=document.createElement("ol")
+        document.body.append(olEle)
+
+        const cars=[
+   [ "BMW", "Mercedes", "Audi", "Volkswagen"], 
+   ["Maruti","Mahindra","Tata", "Motors"],
+   ["Kia","Hyundai"]
+ ] 
+        cars.forEach((arr)=>{
+            let str=``;
+            arr.forEach((ele)=>{
+               str+=ele+ ", ";
+            })
+            if(str.endsWith(", ")){
+               str=str.slice(0, -2);
+            }
+            olEle.innerHTML+=`<li>${str}</li>`
+           
+        })
+
+      })
+   </script>
+</body>
+</html>
