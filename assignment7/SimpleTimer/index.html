@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Simple Timmer</title>
+   <style>
+      body {
+         width: 100%;
+         height: 100vh;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+
+      .box{
+         width: 200px;
+         height: 200px;
+         box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+         border-radius: 4px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+      }
+      .box1{
+         width: 50%;
+         height: 50%;
+         box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+         border-radius: 50%;
+         text-align: center;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+      .para{
+         font-size: 20px;
+         font-weight: bold;
+      }
+      .box2{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         margin-top: 2rem;
+         gap:8px;
+      }
+      button{
+         border: none;
+         box-shadow: 1px 1px 1px 1px #ccc;
+         padding: 4px 12px;
+         border-radius: 4px;
+      }
+
+      @media (max-width: 480px) {  
+     
+      .box{
+          width: 90%;
+          height: 350px;
+          
+      }
+      
+      }  
+
+   </style>
+</head>
+<body>
+   <div class="box">
+      <div class="box1">
+         <p class="para">0</p>
+      </div>
+      <div class="box2">
+         <button class="start">Start</button>
+         <button class="stop">Stop</button>
+         <button class="reset">Reset</button>
+      </div>
+   </div>
+
+
+   <script>
+    document.addEventListener("DOMContentLoaded", function(){
+    let count=0;
+    document.querySelector(".stop").disabled=true;
+     document.querySelector(".reset").disabled=true;
+    document.querySelector(".start").addEventListener("click", function(){
+       document.querySelector(".stop").disabled=false;
+       document.querySelector(".start").disabled=true;
+      const intId=setInterval(()=>{
+        document.querySelector(".para").textContent=++count;
+      }, 1000)
+
+      document.querySelector(".stop").addEventListener("click", function(){
+         clearInterval(intId);
+         document.querySelector(".start").disabled=false;
+         document.querySelector(".stop").disabled=true;
+         document.querySelector(".reset").disabled=false;
+          document.querySelector(".reset").addEventListener("click", function(){
+            count=0;
+            document.querySelector(".para").textContent=count;
+            document.querySelector(".stop").disabled=true;
+             document.querySelector(".start").disabled=false;
+              document.querySelector(".reset").disabled=true;
+          })
+      })
+    })  
+  
+
+  
+  
+  
+  
+  
+  
+   })
+   </script>
+</body>
+</html>

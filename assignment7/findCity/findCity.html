@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <meta name="City application" content=" City application">
+   <meta name="description" content="City application">
+   <title>Find your city</title>
+   <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+   <div class="container">
+      <div class="box box1">
+           <h1 class="main-head">Find Your city</h1>
+         <form name="pincode">
+            <div class="form-group">
+               <label for="pincode">&#128508</label>
+               <input type="text" 
+                name="pin"
+                required
+                pattern="[\d]{6}"
+                maxlength="6"
+                id="pincode"
+                placeholder="Enter Pincode">
+                
+              
+               <button name="btn">Search</button>
+            </div>
+            
+         </form>
+      </div>
+      <div class="box box2">
+         <p class="result"></p>
+      </div>
+      <div class="box box3">
+           <div class="table-box">
+              <table>
+          
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>District</th>
+                    <th>Division</th>
+                    <th>State</th>
+                  </tr>
+                </thead>
+
+              <tbody></tbody>
+            </table>
+                 <div class="loader-box">
+                     <div class="loader">
+                     </div>
+                  </div>
+            </div>
+      </div>
+   </div>
+
+  
+
+       <script>
+       document.addEventListener("DOMContentLoaded", function () {
+        const tblEle = document.querySelector("[name=pincode]");
+        console.log(tblEle)
+        const resEle=document.querySelector(".result");
+        const ldrEle = document.querySelector(".loader-box");
+        tblEle.addEventListener("submit", function (e) {
+          e.preventDefault();
+          tblEle.elements.btn.disabled = true;
+          document.querySelector("table tbody").innerHTML = ``;
+          resEle.innerHTML = ``;
+          ldrEle.style = "display:block";
+
+          const pin = this.elements.pin.value;
+          const url = `https://api.postalpincode.in/pincode/${pin}`;
+          fetch(url)
+            .then((response) => {
+              if (!response.ok) {
+                resEle.innerHTML = `Error`;
+              }
+              return response.json();
+            })
+            .then((data) => {
+              if (data[0].Status === "Error") {
+                resEle.innerHTML = `No pincode found`;
+              } else {
+                data[0].PostOffice.forEach((obj, i) => {
+                  document.querySelector(
+                    "table tbody"
+                  ).innerHTML += `<tr><td>${++i}</td><td>${obj.Name}</td><td>${
+                    obj.District
+                  }</td><td>${obj.Block}</td><td>${obj.State}</td></tr>`;
+                });
+
+                resEle.innerHTML = `Pincode found`;
+              }
+              tblEle.elements.btn.disabled = false;
+              tblEle.elements.pin.value = "";
+              ldrEle.style = "display:none";
+            })
+            .catch((error) => console.error(error));
+        });
+      });
+    </script>
+</body>
+</html>
